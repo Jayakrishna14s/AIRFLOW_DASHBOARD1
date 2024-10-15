@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DAG Run Statuses</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+    />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 40px;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+      }
+      th,
+      td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+      }
+      th {
+        background-color: #f4f4f4;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>DAG Run Statuses</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>DAG ID</th>
+          <th>Execution Date</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for run in dag_runs %}
+        <tr>
+          <td>{{ run.dag_id }}</td>
+          <td>{{ run.execution_date }}</td>
+          <td>{{ run.state }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </body>
+</html>
